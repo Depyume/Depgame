@@ -6,7 +6,7 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self, x, y):
         super().__init__()
-        self.sprite_sheet = pygame.image.load('../sprites/player.png')
+        self.sprite_sheet = pygame.image.load('sprites/player.png')
         self.image = self.get_image(0, 0)
         self.image.set_colorkey([0, 0, 0])
         self.rect = self.image.get_rect()
@@ -17,6 +17,11 @@ class Player(pygame.sprite.Sprite):
         self.animation_speed = 10
         self.animation_counter = 0
         self.animation_index = 0
+
+    def teleport_to(self, x, y):
+        self.position = [x, y]
+        self.save_location()
+        self.update()
 
     def save_location(self): self.old_position = self.position.copy()
 

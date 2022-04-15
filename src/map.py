@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from sys import warnoptions
 
 import pygame
 import pyscroll
@@ -19,6 +20,7 @@ class Map:
     walls: list
     group: pyscroll.PyscrollGroup
     warps: list
+    lzs: dict
 
 
 class MapManager:
@@ -44,19 +46,25 @@ class MapManager:
         #                      self.current_map = warps.target_world
         #                     self.teleport_player(copy_warps.warps_point)
         # collision
-        for sprite in self.get_group().sprites():
-            if sprite.feet.collidelist(self.get_walls()) > -1:
-                sprite.move_back()
+        if self.player.feet.collidelist(self.get_wall()) > -1:
+            self.player.move_back()
+            return
 
-    def teleport_player(self, name):
-        point = self.get_object(name)
-        self.player.position[0] = point.x
-        self.player.position[1] = point.y
-        self.player.save_location()
+        for warpzone in self.get_warps():
+            if self.player.feet.colliderect(warpzone.rect):
+                self.current_map = warpzone.warp_to
+                landing_zone = self.get_lzs()[warpzone.warp_point]
+                self.player.teleport_to(landing_zone[0], landing_zone[1])
+                self.update()
+                break
+
+        #for sprite in self.get_group().sprites():
+            #if sprite.feet.collidelist(self.get_walls()) > -1:
+                #sprite.move_back()
 
     def register_map(self, name):
         # charger map
-        tmx_data = pytmx.util_pygame.load_pygame(f"../maps/{name}.tmx")
+        tmx_data = pytmx.util_pygame.load_pygame(f"maps/{name}.tmx")
         map_data = pyscroll.data.TiledMapData(tmx_data)
         map_layer = pyscroll.orthographic.BufferedRenderer(map_data, self.screen.get_size())
         map_layer.zoom = 3
@@ -64,9 +72,13 @@ class MapManager:
         # lister les zones de collisions de la map
         walls = []
         warps = []
+        lzs = {}
         for obj in tmx_data.objects:
             if obj.type == "collision":
                 walls.append(pygame.Rect(obj.x, obj.y, obj.width, obj.height))
+                continue
+            if obj.type == "lz":
+                lzs[obj.name] = [obj.x, obj.y]
                 continue
             if obj.type == "warp":
                 warps.append(Warp(
@@ -81,7 +93,7 @@ class MapManager:
         group.add(self.player)
 
         # creer un obj map
-        self.maps[name] = Map(name, walls, group, warps)
+        self.maps[name] = Map(name, walls, group, warps, lzs)
 
     def get_map(self):
         return self.maps[self.current_map]
@@ -91,6 +103,12 @@ class MapManager:
 
     def get_wall(self):
         return self.get_map().walls
+
+    def get_warps(self):
+        return self.get_map().warps
+
+    def get_lzs(self):
+        return self.get_map().lzs
 
     def draw(self):
         self.get_group().draw(self.screen)
