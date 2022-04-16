@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="92">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="94">
  <tileset firstgid="1" source="nature.tsx"/>
  <tileset firstgid="721" source="house.tsx"/>
  <layer id="1" name="backgroung" width="50" height="50">
@@ -349,5 +349,14 @@
   <object id="88" type="collision" x="426.625" y="702.5" width="12.125" height="11.625"/>
   <object id="89" type="collision" x="506.875" y="686.375" width="10.125" height="10.25"/>
   <object id="90" type="collision" x="716" y="95.5" width="7.5" height="11.5"/>
+  <object id="92" name="enter_house2" type="warp" x="106.261" y="225.609" width="15.3913" height="23.1304">
+   <properties>
+    <property name="warp_point" value="spawn_house2"/>
+    <property name="warp_to" value="house 2"/>
+   </properties>
+  </object>
+  <object id="93" name="enter_house_exit2" type="lz" x="112.667" y="266">
+   <point/>
+  </object>
  </objectgroup>
 </map>

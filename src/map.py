@@ -33,7 +33,8 @@ class MapManager:
 
         self.register_map("world")
         self.register_map("house 1")
-        self.player.teleport_to(self.get_lzs()["player_start"][0],self.get_lzs()["player_start"][1])
+        self.register_map("house 2")
+        self.player.teleport_to(self.get_lzs()["player_start"][0], self.get_lzs()["player_start"][1])
 
     def check_collision(self):
         # warps
@@ -59,9 +60,9 @@ class MapManager:
                 self.update()
                 break
 
-        #for sprite in self.get_group().sprites():
-            #if sprite.feet.collidelist(self.get_walls()) > -1:
-                #sprite.move_back()
+        # for sprite in self.get_group().sprites():
+        # if sprite.feet.collidelist(self.get_walls()) > -1:
+        # sprite.move_back()
 
     def register_map(self, name):
         # charger map
