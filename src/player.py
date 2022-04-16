@@ -13,7 +13,7 @@ class Player(pygame.sprite.Sprite):
         self.position = [x, y]
         self.feet = pygame.Rect(0, 0, 16, 8)
         self.old_position = self.position.copy()
-        self.speed = 1.5
+        self.speed = 5
         self.animation_speed = 10
         self.animation_counter = 0
         self.animation_index = 0
