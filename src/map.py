@@ -9,8 +9,8 @@ import pytmx
 @dataclass
 class Warp:
     name: str
-    target_world: str
-    teleport_point: str
+    warp_to: str
+    warp_point: str
     rect: pygame.rect
 
 
@@ -32,7 +32,7 @@ class MapManager:
         self.current_map = "world"
 
         self.register_map("world")
-        self.register_map("house 1")
+        # self.register_map("house 1")
 
     def check_collision(self):
         # warps
@@ -116,3 +116,4 @@ class MapManager:
 
     def update(self):
         self.get_group().update()
+        self.check_collision()

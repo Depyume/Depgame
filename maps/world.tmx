@@ -339,10 +339,11 @@
   <object id="85" type="collision" x="715.667" y="256.333" width="9" height="10.3333"/>
   <object id="86" name="enter_house" type="warp" x="602.25" y="145.5" width="15.5" height="26">
    <properties>
+    <property name="warp_point" value="truc"/>
     <property name="warp_to" value="house 1"/>
    </properties>
   </object>
-  <object id="87" name="enter_house_exit" type="lz" x="597.351" y="175.775">
+  <object id="87" name="enter_house_exit" type="lz" x="595.082" y="173.506">
    <point/>
   </object>
   <object id="88" type="collision" x="426.625" y="702.5" width="12.125" height="11.625"/>
