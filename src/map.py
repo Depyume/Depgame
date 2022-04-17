@@ -35,6 +35,7 @@ class MapManager:
         self.register_map("house 1")
         self.register_map("house 2")
         self.register_map("donjon")
+        self.register_map("world of")
         self.player.teleport_to(self.get_lzs()["player_start"][0], self.get_lzs()["player_start"][1])
 
     def check_collision(self):
@@ -92,7 +93,7 @@ class MapManager:
                 ))
 
         # dessiner le groupe de calqque
-        group = pyscroll.PyscrollGroup(map_layer=map_layer, default_layer=3)
+        group = pyscroll.PyscrollGroup(map_layer=map_layer, default_layer=2)
         group.add(self.player)
 
         # creer un obj map

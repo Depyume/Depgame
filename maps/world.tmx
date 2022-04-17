@@ -3,6 +3,9 @@
  <tileset firstgid="1" source="nature.tsx"/>
  <tileset firstgid="721" source="house.tsx"/>
  <tileset firstgid="1496" source="tileset_dungeon.tsx"/>
+ <tileset firstgid="1752" source="arbre set.tsx"/>
+ <tileset firstgid="4203" source="batiment.tsx"/>
+ <tileset firstgid="8299" source="exterieur.tsx"/>
  <layer id="1" name="backgroung" width="50" height="50">
   <data encoding="csv">
 292,293,294,295,292,293,294,295,292,293,294,295,292,293,294,295,292,293,294,295,292,293,294,295,292,293,294,295,292,293,294,295,292,293,294,295,292,293,294,295,292,293,294,295,292,293,294,295,292,293,

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="75" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="61">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="75" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="63">
  <tileset firstgid="1" source="tileset_dungeon.tsx"/>
+ <tileset firstgid="257" source="Props.tsx"/>
+ <tileset firstgid="1281" source="TX Plant.tsx"/>
+ <tileset firstgid="2305" source="TX Shadow Plant.tsx"/>
+ <tileset firstgid="3329" source="TX Shadow.tsx"/>
+ <tileset firstgid="4353" source="TX Struct.tsx"/>
+ <tileset firstgid="5377" source="TX Tileset Grass.tsx"/>
+ <tileset firstgid="5633" source="TX Tileset Stone Ground.tsx"/>
  <layer id="1" name="background" width="75" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -263,5 +270,14 @@
   <object id="58" type="collision" x="100" y="316" width="21.4545" height="14.9091"/>
   <object id="59" type="collision" x="180.364" y="256" width="20.5455" height="6.18182"/>
   <object id="60" type="collision" x="161.273" y="370.727" width="26.9091" height="26.7273"/>
+  <object id="61" name="enter_worldof" type="warp" x="80" y="352" width="32" height="32">
+   <properties>
+    <property name="warp_point" value="exit_donjon_exit"/>
+    <property name="warp_to" value="world of"/>
+   </properties>
+  </object>
+  <object id="62" name="enter_donjon" type="lz" x="128" y="368">
+   <point/>
+  </object>
  </objectgroup>
 </map>
