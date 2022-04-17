@@ -1,4 +1,5 @@
 import pygame
+
 import animation
 
 
@@ -17,13 +18,16 @@ class Player(pygame.sprite.Sprite):
         self.animation_speed = 10
         self.animation_counter = 0
         self.animation_index = 0
+        self.health = 100
+        self.maximum_health = 100
 
     def teleport_to(self, x, y):
         self.position = [x, y]
         self.save_location()
         self.update()
 
-    def save_location(self): self.old_position = self.position.copy()
+    def save_location(self):
+        self.old_position = self.position.copy()
 
     def move_right(self):
         self.position[0] += self.speed
@@ -37,7 +41,7 @@ class Player(pygame.sprite.Sprite):
 
     def move_left(self):
         self.position[0] -= self.speed
-        #sprite
+        # sprite
         self.animation_counter += 1
         if self.animation_counter > self.animation_speed:
             self.animation_counter = 0
@@ -47,7 +51,7 @@ class Player(pygame.sprite.Sprite):
 
     def move_up(self):
         self.position[1] -= self.speed
-        #sprite
+        # sprite
         self.animation_counter += 1
         if self.animation_counter > self.animation_speed:
             self.animation_counter = 0
@@ -57,7 +61,7 @@ class Player(pygame.sprite.Sprite):
 
     def move_down(self):
         self.position[1] += self.speed
-        #sprite
+        # sprite
         self.animation_counter += 1
         if self.animation_counter > self.animation_speed:
             self.animation_counter = 0
@@ -70,7 +74,6 @@ class Player(pygame.sprite.Sprite):
         self.rect.midbottom = self.rect.midbottom
         self.feet.x = self.position[0] + 8
         self.feet.y = self.position[1] + 24
-
 
     def move_back(self):
         self.position = self.old_position
