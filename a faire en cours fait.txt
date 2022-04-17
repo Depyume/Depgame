@@ -1,10 +1,9 @@
 à faire
 system de magic + arme 
 ui for ⤴
-system de vie 
 crer un ennemy + player ennemy interaction
 
 en cours
-
+system de vie 
 fini
 system de map + teleport
