@@ -66,4 +66,4 @@ class Game:
             clock.tick(60)
 
         pygame.quit()
-
+        screen = pygame.display.set_mode((800, 600))

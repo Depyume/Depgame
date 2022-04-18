@@ -4,9 +4,6 @@ import animation
 
 
 class Player(pygame.sprite.Sprite):
-    full_heath = pygame.image.load('coeur.png')
-    half_hearth = pygame.image.load('demi coeur.png')
-    empty_heath = pygame.image.load('0 coeur.png')
 
     def __init__(self, x, y):
         super().__init__()
@@ -23,6 +20,7 @@ class Player(pygame.sprite.Sprite):
         self.animation_index = 0
         self.health = 3
         self.max_health = 10
+        self.screen = pygame.display.set_mode((800, 600))
 
     def get_damage(self):
         if self.health > 0:
@@ -34,7 +32,18 @@ class Player(pygame.sprite.Sprite):
 
     def full_hearts(self):
         for heart in range(self.health):
-            
+            self.screen.blits(pygame.image.load('coeur.png'), (heart * 50, 45))
+
+    def empty_hearts(self):
+        for heart in range(self.max_health):
+            if heart < self.health:
+                self.screen.blits(pygame.image.load('coeur.png'), (heart * 50, 45))
+            else:
+                self.screen.blits(pygame.image.load('0 coeur.png'), (heart * 50, 45))
+
+    def half_hearts(self):
+        half_hearts_total = self.health / 2
+        half_hearts_exists = half_hearts_total - int(half_hearts_total) != 0   
 
     def teleport_to(self, x, y):
         self.position = [x, y]
@@ -90,6 +99,8 @@ class Player(pygame.sprite.Sprite):
         self.feet.x = self.position[0] + 8
         self.feet.y = self.position[1] + 24
         print(self.health)
+        self.full_hearts()
+        self.empty_hearts()
 
     def move_back(self):
         self.position = self.old_position
@@ -100,3 +111,7 @@ class Player(pygame.sprite.Sprite):
         image = pygame.Surface([32, 32])
         image.blit(self.sprite_sheet, (0, 0), (x, y, 32, 32))
         return image
+
+    full_heart = pygame.image.load('coeur.png')
+    half_hearth = pygame.image.load('demi coeur.png')
+    empty_heath = pygame.image.load('0 coeur.png')
