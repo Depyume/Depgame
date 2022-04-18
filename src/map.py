@@ -117,6 +117,7 @@ class MapManager:
     def draw(self):
         self.get_group().draw(self.screen)
         self.get_group().center(self.player.rect.center)
+        self.player.show_hearts()
 
     def update(self):
         self.get_group().update()
