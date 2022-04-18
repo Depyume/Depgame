@@ -4,6 +4,9 @@ import animation
 
 
 class Player(pygame.sprite.Sprite):
+    full_heath = pygame.image.load('coeur.png')
+    half_hearth = pygame.image.load('demi coeur.png')
+    empty_heath = pygame.image.load('0 coeur.png')
 
     def __init__(self, x, y):
         super().__init__()
@@ -18,8 +21,20 @@ class Player(pygame.sprite.Sprite):
         self.animation_speed = 10
         self.animation_counter = 0
         self.animation_index = 0
-        self.health = 100
-        self.maximum_health = 100
+        self.health = 3
+        self.max_health = 10
+
+    def get_damage(self):
+        if self.health > 0:
+            self.health -= 1
+
+    def get_health(self):
+        if self.health < self.max_health:
+            self.health += 1
+
+    def full_hearts(self):
+        for heart in range(self.health):
+            
 
     def teleport_to(self, x, y):
         self.position = [x, y]
@@ -74,6 +89,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.midbottom = self.rect.midbottom
         self.feet.x = self.position[0] + 8
         self.feet.y = self.position[1] + 24
+        print(self.health)
 
     def move_back(self):
         self.position = self.old_position

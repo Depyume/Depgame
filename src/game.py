@@ -2,6 +2,7 @@ import pygame
 import pytmx
 import pyscroll
 
+from src import player
 from src.player import Player
 from src.map import MapManager
 
@@ -9,6 +10,7 @@ from src.map import MapManager
 class Game:
 
     def __init__(self):
+
 
         # fenetre d jeu
         self.screen = pygame.display.set_mode((800, 600))
@@ -64,3 +66,4 @@ class Game:
             clock.tick(60)
 
         pygame.quit()
+
