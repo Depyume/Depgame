@@ -24,6 +24,7 @@ class Player(pygame.sprite.Sprite):
         self.full_heart = pygame.image.load('coeur.png')
         self.half_hearth = pygame.image.load('demi coeur.png')
         self.empty_heath = pygame.image.load('0 coeur.png')
+        self.you_died = pygame.image.load('you died.png')
         self.display_surface = pygame.display.get_surface()
 
     def get_damage(self):
@@ -41,9 +42,10 @@ class Player(pygame.sprite.Sprite):
             else:
                 self.display_surface.blit(self.empty_heath, (heart * 40, 45))
 
-    #def death(self):
-        #if self.health == 0:
-            #print(self.health)
+    def death(self):
+            if self.health == 0:
+                self.display_surface.blit(self.you_died, (350, 200))
+                pygame.display.flip()
 
     def half_hearts(self):
         half_hearts_total = self.health / 2
@@ -102,6 +104,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.midbottom = self.rect.midbottom
         self.feet.x = self.position[0] + 8
         self.feet.y = self.position[1] + 24
+        self.death()
 
     def move_back(self):
         self.position = self.old_position
