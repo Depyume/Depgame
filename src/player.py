@@ -15,7 +15,7 @@ class Player(pygame.sprite.Sprite):
         self.feet = pygame.Rect(0, 0, 16, 8)
         self.center = pygame.Rect(0, 0, 16, 16)
         self.old_position = self.position.copy()
-        self.speed = 1.5
+        self.speed = 5
         self.animation_speed = 10
         self.animation_counter = 0
         self.animation_index = 0
@@ -43,9 +43,11 @@ class Player(pygame.sprite.Sprite):
                 self.display_surface.blit(self.empty_heath, (heart * 40, 45))
 
     def death(self):
-            if self.health == 0:
-                self.display_surface.blit(self.you_died, (350, 200))
-                pygame.display.flip()
+        if self.health == 0:
+            self.display_surface.blit(self.you_died, (250, 200))
+            pygame.display.flip()
+            pygame.time.wait(1000)
+            pygame.quit()   
 
     def half_hearts(self):
         half_hearts_total = self.health / 2
