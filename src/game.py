@@ -11,7 +11,6 @@ class Game:
 
     def __init__(self):
 
-
         # fenetre d jeu
         self.screen = pygame.display.set_mode((800, 600))
         pygame.display.set_caption("Depgame - Aventure")
@@ -38,6 +37,10 @@ class Game:
             self.player.move_left()
         elif pressed[pygame.K_RIGHT]:
             self.player.move_right()
+        elif pressed[pygame.K_h]:
+            self.player.get_damage()
+        elif pressed[pygame.K_k]:
+            self.player.get_health()
 
     def update(self):
         self.world.update()

@@ -37,9 +37,13 @@ class Player(pygame.sprite.Sprite):
     def show_hearts(self):
         for heart in range(self.max_health):
             if heart < self.health:
-                self.display_surface.blit(self.full_heart, (heart * 10, 45))
+                self.display_surface.blit(self.full_heart, (heart * 40, 45))
             else:
-                self.display_surface.blit(self.empty_heath, (heart * 10, 45))
+                self.display_surface.blit(self.empty_heath, (heart * 40, 45))
+
+    #def death(self):
+        #if self.health == 0:
+            #print(self.health)
 
     def half_hearts(self):
         half_hearts_total = self.health / 2
@@ -108,5 +112,3 @@ class Player(pygame.sprite.Sprite):
         image = pygame.Surface([32, 32])
         image.blit(self.sprite_sheet, (0, 0), (x, y, 32, 32))
         return image
-
-
