@@ -44,10 +44,9 @@ class Player(pygame.sprite.Sprite):
 
     def death(self):
         if self.health == 0:
-            self.display_surface.blit(self.you_died, (250, 200))
+            self.display_surface.blit(self.you_died, (-230, -100))
             pygame.display.flip()
             pygame.time.wait(1000)
-            pygame.quit()   
 
     def half_hearts(self):
         half_hearts_total = self.health / 2
