@@ -3,9 +3,10 @@ crer un ennemy + player ennemy interaction
 save system
 
 en cours
-system de mort
 system de magic + arme 
 ui for ⤴
+creer un ennemie 
+
 fini
 system de map + teleport
 system de vie 
